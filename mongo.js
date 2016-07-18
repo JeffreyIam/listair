@@ -1,3 +1,4 @@
+var mongodb = require('mongodb');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -6,12 +7,12 @@ mongoose.connect(port);
 
 var db = mongoose.connection;
 
-db.on('error', console.erro.bind(console, 'connection errors: '));
+db.on('error', console.error.bind(console, 'connection errors: '));
 db.once('open', function() {
   console.log("Mongodb connection open");
 })
 
-var theList = new mongoose.Schema({
+var itemlist = new mongoose.Schema({
   item: {
     type: String,
     required: true
@@ -26,9 +27,9 @@ var theList = new mongoose.Schema({
   }
 });
 
-var List = mongoose.model('theList', thelist);
+var List = mongoose.model('itemlist', itemlist);
 module.exports = List;
 
-new List({item: xbox, description: white xbox, price: 30}, function() {
+new List({item: "xbox", description: "white xbox", price: 30}, function() {
   console.log('successfully saved chicken lul')
 })

@@ -7,16 +7,20 @@
     <script src="app.js"></script>
   </head>
 
-  <body ng-app="App" ng-controller="MainCtrl">
-    <input ng-model="copyCat">
+  <body ng-app="theApp" ng-controller="maincontroller">
 
-    <div>
-    {{copyCat}}
-    </div>
+      <h3> Your listing </h3>
+      <input ng-model="post.item" placeholder="item"> {{post.item}}
+      <br>
+      <input ng-model="post.description" placeholder="description">
+      <br>
+      <input ng-model="post.price" placeholder="price">
+      <br>
+      <button ng-click="addItem(post)">Add listing</button>
 
-  <ul>
-    <li ng-repeat="post in posts"> </li>
-  </ul>
+    <ul>
+      <li ng-repeat="post in itemlist"> </li>
+    </ul>
 
   </body>
 
