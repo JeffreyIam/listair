@@ -19,7 +19,14 @@
       <button ng-click="addItem(post)">Add listing</button>
 
     <ul>
-      <li ng-repeat="post in itemlist"> </li>
+      <li ng-repeat="post in itemlist">
+        {{post.item}} <button ng-click="remove(post._id)">Remove</button>
+        <br>
+        {{post.description}}
+        <br>
+        ${{post.price}} per day
+      </li>
+
     </ul>
 
   </body>

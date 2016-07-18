@@ -1,12 +1,12 @@
 var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
-var schema = require('./mongo.js');
+var table = require('./mongo.js');
 var bodyParser = require('body-parser');
 
 var app = express();
 
-var listings = mongoose.model('itemlist', schema.List)
+var listings = mongoose.model('itemlist', table.List)
 
 app.use(express.static(__dirname + "/"));
 app.use(bodyParser.json());
@@ -23,13 +23,23 @@ app.get('/listings', function(req, res) {
 });
 
 app.post('/listings', function(req, res) {
-  var list = new List(req.body);
+  var list = new table(req.body);
   list.save(function(err,data) {
     if(err) {
       console.log(err);
     } else {
       console.log('saved ' + data);
+      res.end('saved ' + data);
     }
+  })
+})
+
+app.delete('/listings/:id', function(req, res) {
+  var id = req.params.id;
+  console.log(id);
+  listings.remove({_id: id}, function(err, data) {
+    console.log('data from server.js ' + data);
+    res.end(data);
   })
 })
 

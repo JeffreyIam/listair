@@ -30,6 +30,10 @@ var itemlist = new mongoose.Schema({
 var List = mongoose.model('itemlist', itemlist);
 module.exports = List;
 
-new List({item: "xbox", description: "white xbox", price: 30}, function() {
-  console.log('successfully saved chicken lul')
+List.create({item: "xbox", description: "white xbox", price: 30}, function(err) {
+  if(err) {
+    console.log(err);
+  } else {
+    console.log('created xbox');
+  }
 })

@@ -6,8 +6,6 @@ sep.controller('maincontroller', function($scope, $http) {
       method:'GET',
       url: '/listings'
     }).success(function(res) {
-      console.log(res);
-      console.log('getting from controller')
       $scope.itemlist = res;
     });
   };
@@ -22,5 +20,13 @@ sep.controller('maincontroller', function($scope, $http) {
     });
     console.log($scope);
     refresh();
+  }
+
+  $scope.remove = function(id) {
+    console.log('removing from app' , id )
+    $http.delete('/listings/' + id).success(function(res) {
+      console.log('logging res from within remove ' + res);
+      refresh();
+    });
   }
 })
