@@ -16,7 +16,6 @@ app.get('/listings', function(req, res) {
     if(err) {
       console.log(err);
     } else {
-      console.log('getting from server.js');
       res.json(data);
     }
   });
@@ -28,7 +27,6 @@ app.post('/listings', function(req, res) {
     if(err) {
       console.log(err);
     } else {
-      console.log('saved ' + data);
       res.end('saved ' + data);
     }
   })
@@ -38,8 +36,12 @@ app.delete('/listings/:id', function(req, res) {
   var id = req.params.id;
   console.log(id);
   listings.remove({_id: id}, function(err, data) {
-    console.log('data from server.js ' + data);
-    res.end(data);
+    if(err) {
+      console.log("error: " + err);
+    } else {
+      console.log(data);
+      res.json(data);
+    }
   })
 })
 

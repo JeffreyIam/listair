@@ -13,19 +13,16 @@ sep.controller('maincontroller', function($scope, $http) {
   refresh();
 
   $scope.addItem = function(post) {
-    return $http({
+    $http({
       method:'POST',
       url: '/listings',
-      data: $scope.post
+      data: post
     });
-    console.log($scope);
-    refresh();
+     refresh();
   }
 
   $scope.remove = function(id) {
-    console.log('removing from app' , id )
     $http.delete('/listings/' + id).success(function(res) {
-      console.log('logging res from within remove ' + res);
       refresh();
     });
   }
