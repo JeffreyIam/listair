@@ -4,7 +4,7 @@ sep.controller('maincontroller', function($scope, $http) {
   var refresh = function() {
     return $http({
       method:'GET',
-      url: '/itemlist'
+      url: '/listings'
     }).success(function(res) {
       console.log(res);
       console.log('getting from controller')
@@ -17,7 +17,7 @@ sep.controller('maincontroller', function($scope, $http) {
   $scope.addItem = function(post) {
     return $http({
       method:'POST',
-      url: '/itemlist',
+      url: '/listings',
       data: $scope.post
     });
     console.log($scope);
